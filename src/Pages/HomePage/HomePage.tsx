@@ -1,33 +1,25 @@
 import { useEffect, useState } from 'react'
 import s from './HomePage.module.css'
 import axios from 'axios'
+import { useAppDispatch } from '../../Redux';
+import { getTodos, selectTodos } from '../../Redux/Slice/TodosSlice';
+import { useSelector } from 'react-redux';
 
 
-type dataType = {
-    body: string,
-    id: number,
-    title: string,
-    userId: number,
-}
+const HomePage:React.FC = () => {
+const dispatch =useAppDispatch()
+const {items} = useSelector(selectTodos)
 
-
-const HomePage = () => {
-    const [todos, setTodos] = useState<dataType[]>([])
-
-    useEffect(() => {
-        async function fetchData() {
-            const data = await axios.get<dataType[]>(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5`)
-            setTodos(data.data)
-        }
-        fetchData()
+    useEffect(() => { 
+        dispatch(getTodos())
     }, [])
 
     return (
         <div className={s.container}>
             {
-                todos.map((todo) => (
-                    <div key={todo.id}>
-                        <span>{todo.title}</span>
+                items.map((item) => (
+                    <div key={item.id}>
+                        <span>{item.title}</span>
                     </div>
                 )
                 )
