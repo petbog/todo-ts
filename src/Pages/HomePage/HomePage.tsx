@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useAppDispatch } from '../../Redux';
 import { getTodos, selectTodos } from '../../Redux/Slice/TodosSlice';
 import { useSelector } from 'react-redux';
+import Input from '../../Component/InputComp/Input';
 
 
 const HomePage:React.FC = () => {
@@ -16,6 +17,9 @@ const {items} = useSelector(selectTodos)
 
     return (
         <div className={s.container}>
+            <div className="">
+            <Input/>
+            </div>
             {
                 items.map((item) => (
                     <div key={item.id}>

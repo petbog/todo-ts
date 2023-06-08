@@ -26,18 +26,28 @@ type itemsType = {
 }
 interface initialStateType {
     items: itemsType[],
+    text: string
     status: Status
 }
 
 const initialState: initialStateType = {
     items: [],
-    status: Status.LOADING
+    status: Status.LOADING,
+    text: ''
 }
 
 export const TodosSlise = createSlice({
     name: 'todos',
     initialState,
     reducers: {
+        addText(state, action: PayloadAction<string>) {
+            state.items = [...state.items, {
+                id: 1,
+                title: action.payload,
+                userId: 1,
+                body: 'bbb'
+            }]
+        }
     }, extraReducers: (builder) => {
         builder.addCase(getTodos.pending, (state) => {
             state.status = Status.LOADING
@@ -54,7 +64,7 @@ export const TodosSlise = createSlice({
     }
 })
 
-export const { } = TodosSlise.actions
+export const { addText } = TodosSlise.actions
 
 
 export const selectTodos = (state: RootState) => state.todos

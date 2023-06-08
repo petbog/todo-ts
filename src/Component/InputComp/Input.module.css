@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 500px;
+    position: relative;
+    height: 100px;
+    margin: 100px 0 0 0;
+}
+
+.input {
+    width: 320px;
+    position: relative;
+    padding: 13px 0;
+    border-radius: 10px;
+    border: 1px solid black;
+    outline: none;
+    padding: 13px 140px 13px 40px;
+    font-size: 15px;
+}
+
+.button {
+    position: absolute;
+    top: 0px;
+    padding: 14px 16px;
+    right: -2px;
+    font-size: 13px;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: #4c4747;
+    color: #fff;
+    transition: all 0.5s;
+}
+.button:hover{
+background-color: #b9aeae;
+color:#4c4747 ;
+}
+.deleteString{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 2px;
+    right: 87px;;
+    cursor: pointer;
+}
