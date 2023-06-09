@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react'
 import s from './HomePage.module.css'
-import axios from 'axios'
 import { useAppDispatch } from '../../Redux';
-import { getTodos, selectTodos } from '../../Redux/Slice/TodosSlice';
-import { useSelector } from 'react-redux';
+import { getTodos } from '../../Redux/Slice/TodosSlice';
 import Input from '../../Component/InputComp/Input';
+import TodosItem from '../../Component/Todos/TodosItem';
 
 
 const HomePage:React.FC = () => {
 const dispatch =useAppDispatch()
-const {items} = useSelector(selectTodos)
+
 
     useEffect(() => { 
         dispatch(getTodos())
@@ -20,14 +19,9 @@ const {items} = useSelector(selectTodos)
             <div className="">
             <Input/>
             </div>
-            {
-                items.map((item) => (
-                    <div key={item.id}>
-                        <span>{item.title}</span>
-                    </div>
-                )
-                )
-            }
+            <div className="">
+            <TodosItem/>
+            </div>
         </div>
     )
 }

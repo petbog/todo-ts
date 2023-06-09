@@ -7,7 +7,7 @@ export const getTodos = createAsyncThunk(
     'todos/getTodos',
     async function () {
 
-        const { data } = await axios.get<itemsType[]>(`https://jsonplaceholder.typicode.com/posts?_limit=5`)
+        const { data } = await axios.get<itemsType[]>(`https://jsonplaceholder.typicode.com/todos?_limit=5`)
         return data as itemsType[]
     }
 )
@@ -18,8 +18,8 @@ export enum Status {
     ERROR = 'error'
 }
 
-type itemsType = {
-    body: string,
+export type itemsType = {
+    completed: boolean,
     id: number,
     title: string,
     userId: number,
@@ -45,7 +45,7 @@ export const TodosSlise = createSlice({
                 id: 1,
                 title: action.payload,
                 userId: 1,
-                body: 'bbb'
+                completed:false
             }]
         }
     }, extraReducers: (builder) => {
